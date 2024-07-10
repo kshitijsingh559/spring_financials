@@ -28,3 +28,5 @@ Now you can see your application is running on port 8000.
 6. Run `php artisan schedule:run` in a seperate tab/window to run the schedulars.
 
 7. Import postman collecting (SpringFinancials.postman_collection.json) for api documentation.
+
+8. Run `php artisan app:reset-all-scores` to reset all the points.
