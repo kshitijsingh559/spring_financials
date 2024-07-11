@@ -28,6 +28,7 @@ To install composer visit - https://getcomposer.org/
 
 7. Run `php artisan schedule:run` in a seperate tab/window to run the schedulars.
 
+<<<<<<< HEAD
 8. Import postman collecting (SpringFinancials.postman_collection.json) for api documentation.
    
 9.  Go to `frontend` directory
@@ -41,3 +42,8 @@ To install composer visit - https://getcomposer.org/
 13. Run `npm run build` to build the application
     
 14. Run `npm start` to start the application
+=======
+7. Import postman collecting (SpringFinancials.postman_collection.json) for api documentation.
+
+8. Run `php artisan app:reset-all-scores` to reset all the points.
+>>>>>>> 3eb387d0987865ddf874192fa1a79eb0886d7596
