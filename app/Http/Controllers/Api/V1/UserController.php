@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddPointRequest;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\DeleteUserRequest;
 use App\Http\Resources\GeneralResource;
 use App\Http\Resources\User\LeaderboardResource;
 use App\Http\Resources\User\UserGroupedByPointResource;
@@ -100,7 +101,7 @@ class UserController extends Controller
         }
     }
 
-    public function deleteUser(Request $request)
+    public function deleteUser(DeleteUserRequest $request)
     {
         try {
             $userId = $request->input('user_id');
