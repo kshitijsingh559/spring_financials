@@ -28,16 +28,18 @@ To install composer visit - https://getcomposer.org/
 
 7. Run `php artisan schedule:run` in a seperate tab/window to run the schedulars.
 
-8. Import postman collecting (SpringFinancials.postman_collection.json) for api documentation.
-   
-9.  Go to `frontend` directory
-    
-10. copy .env.example and create .env
+8. You can use `php artisan app:reset-all-scores` to reset all user's score to 0.
 
-11. Change the value of `NEXT_PUBLIC_BASE_API_URL` as per your laravel api url eg; [127.0.0.0:8000/api/v1](http://127.0.0.1:8000/api/v1)
+9. Import postman collecting (SpringFinancials.postman_collection.json) for api documentation.
+   
+10.  Go to `frontend` directory
     
-12. Run `npm install` to install node modules
+11. copy .env.example and create .env
+
+12. Change the value of `NEXT_PUBLIC_BASE_API_URL` as per your laravel api url eg; [127.0.0.0:8000/api/v1](http://127.0.0.1:8000/api/v1)
     
-13. Run `npm run build` to build the application
+13. Run `npm install` to install node modules
     
-14. Run `npm start` to start the application
+14. Run `npm run build` to build the application
+    
+15. Run `npm start` to start the application
