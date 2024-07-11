@@ -43,16 +43,35 @@ class UserService implements UserServiceInterface
         ]);
     }
 
-    public function addPoints($userId, $points)
+    public function addPoints($reqData)
+    {
+        $userId = $reqData['user_id'];
+        $points = $reqData['points'];
+        $user = User::find($userId);
+        if (empty($user)) {
+            return null;
+        }
+        if ($reqData['operator'] == 'sub') {
+            if ($user->points < $points) {
+                return $user;
+            }
+            $points = $user->points - $points;
+        } else {
+            $points = $user->points + $points;
+        }
+        $user->points = $points;
+        $user->save();
+        return $user;
+    }
+
+    public function deleteUser($userId)
     {
         $user = User::find($userId);
         if (empty($user)) {
             return null;
         }
-        $points = $user->points + $points;
-        $user->points = $points;
-        $user->save();
-        return $user;
+        $user->delete();
+        return null;
     }
 
     public function resetAllScores()

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddPointRequest;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Resources\GeneralResource;
 use App\Http\Resources\User\LeaderboardResource;
@@ -69,6 +70,47 @@ class UserController extends Controller
         try {
             $usersGroupedByPoints = $this->userService->usersGroupedByPoints();
             return response()->json($usersGroupedByPoints);
+        } catch (Exception $ex) {
+            Log::error($ex->getMessage());
+            $responseData = [
+                'status_code' => 500,
+                'success' => false,
+                'message' => $ex->getMessage(),
+                'data' => []
+            ];
+            return (new GeneralResource($responseData))->response()->setStatusCode($responseData['status_code']);
+        }
+    }
+
+    public function addPoints(AddPointRequest $request)
+    {
+        try {
+            $reqData = $request->all();
+            $usersGroupedByPoints = $this->userService->addPoints($reqData);
+            return response()->json($usersGroupedByPoints);
+        } catch (Exception $ex) {
+            Log::error($ex->getMessage());
+            $responseData = [
+                'status_code' => 500,
+                'success' => false,
+                'message' => $ex->getMessage(),
+                'data' => []
+            ];
+            return (new GeneralResource($responseData))->response()->setStatusCode($responseData['status_code']);
+        }
+    }
+
+    public function deleteUser(Request $request)
+    {
+        try {
+            $userId = $request->input('user_id');
+            $this->userService->deleteUser($userId);
+            $responseData = [
+                'status_code' => 200,
+                'success' => true,
+                'data' => []
+            ];
+            return (new GeneralResource($responseData))->response()->setStatusCode($responseData['status_code']);
         } catch (Exception $ex) {
             Log::error($ex->getMessage());
             $responseData = [

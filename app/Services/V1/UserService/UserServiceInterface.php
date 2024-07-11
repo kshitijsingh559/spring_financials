@@ -10,7 +10,9 @@ interface UserServiceInterface
 
     public function createUser($reqData);
 
-    public function addPoints($userId, $points);
+    public function addPoints($reqData);
+
+    public function deleteUser($userId);
 
     public function resetAllScores();
 
